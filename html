@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أميرتي الغالية ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        :root {
+            --primary: #ff4b5c; /* اللون الأحمر الوردي للأزرار والقلوب */
+            --accent: #a2d2ff;  /* لون سماوي فاتح للتناسق مع الكحلي */
+            --navy-deep: #000814; /* أغمق درجة كحلي */
+            --navy-main: #001d3d; /* اللون الكحلي الأساسي */
+            --navy-light: #003566; /* كحلي فاتح للتدرج */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* خلفية متدرجة فخمة باللون الكحلي */
+            background: radial-gradient(circle at center, var(--navy-light) 0%, var(--navy-main) 50%, var(--navy-deep) 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Cairo', sans-serif;
+            color: white;
+            cursor: none;
+        }
+
+        /* المؤشر السحري متوهج باللون السماوي ليتناسب مع الكحلي */
+        #magicCursor {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999999;
+            box-shadow: 0 0 20px 5px var(--accent), 0 0 40px 10px white;
+            transform: translate(-50%, -50%);
+            left: -100px;
+            transition: width 0.2s, height 0.2s, transform 0.1s ease-out;
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -100px;
+            color: var(--primary);
+            font-size: 2rem;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .card-container {
+            perspective: 1500px;
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .glass-card {
+            /* زجاج شفاف يميل للزرقة */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            max-width: 550px;
+            width: 90%;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(162, 210, 255, 0.2);
+            animation: morphing 10s infinite alternate;
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%; }
+            100% { border-radius: 40% 60% 30% 70% / 70% 30% 60% 40%; }
+        }
+
+        .cat-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 15px var(--accent));
+            animation: floating 4s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .btn-magic {
+            background: linear-gradient(45deg, var(--primary), #d90429);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+            position: relative;
+            z-index: 20;
+            cursor: none;
+            box-shadow: 0 5px 15px rgba(255, 75, 92, 0.4);
+        }
+
+        #finalActionBtn {
+            display: none;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 20px auto;
+            background: white;
+            color: var(--navy-main);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 30px rgba(162, 210, 255, 0.4);
+            cursor: none;
+        }
+
+        #finalActionBtn.show {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #proposalScreen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, var(--navy-main) 0%, var(--navy-deep) 100%);
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .big-heart {
+            width: 120px; height: 120px;
+            background: var(--primary);
+            position: relative;
+            transform: rotate(-45deg) scale(0);
+            box-shadow: 0 0 80px var(--primary);
+            animation: heartEntry 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
+                       heartBeat 0.8s infinite alternate 1.5s;
+        }
+
+        .big-heart::before, .big-heart::after {
+            content: '';
+            width: 120px; height: 120px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .big-heart::before { top: -60px; left: 0; }
+        .big-heart::after { top: 0; left: 60px; }
+
+        @keyframes heartEntry { to { transform: rotate(-45deg) scale(1); } }
+        @keyframes heartBeat { to { transform: rotate(-45deg) scale(1.1); box-shadow: 0 0 120px var(--primary); } }
+
+        .proposal-text {
+            margin-top: 80px;
+            font-size: 1.2rem; 
+            font-weight: bold;
+            max-width: 85%;
+            line-height: 1.6;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        .options-container {
+            display: none;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            z-index: 110;
+            margin-top: 20px;
+        }
+
+        .btn-option {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        #yesBtn {
+            background: white;
+            color: var(--navy-main);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            min-width: 160px;
+        }
+
+        #noBtn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(162, 210, 255, 0.3);
+            position: relative;
+        }
+
+        #messageBox { display: none; opacity: 0; }
+
+        .typing-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 20px 0;
+            min-height: 100px;
+            color: #f0f0f0;
+        }
+
+        /* نيازك سماوية لتناسب الخلفية الكحلية */
+        .meteor {
+            position: absolute;
+            width: 2px; height: 80px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="magicCursor"></div>
+
+    <div class="card-container" id="mainContainer">
+        <div class="glass-card" id="introCard">
+            <h1 style="font-size: 2rem; margin-bottom: 10px; color: white;">أميرتي الغالية ✨</h1>
+            <p style="color: var(--accent); margin-bottom: 15px;">هناك صديقة صغيرة تفتقدك..</p>
+            <img id="catSprite" src="https://i.imgur.com/vHCHY84.png" class="cat-image">
+            <br>
+            <button class="btn-magic" onclick="revealMagic()">أسعدي القطة ❤</button>
+        </div>
+
+        <div class="glass-card" id="messageBox">
+            <p style="color: var(--accent); font-weight: bold;">رسالة لقلبك 🥰</p>
+            <div class="typing-content" id="textTarget"></div>
+            <button id="finalActionBtn" onclick="showProposal()">
+                <span>❤</span> اضغطني بعد القراءة
+            </button>
+        </div>
+    </div>
+
+    <div id="proposalScreen">
+        <div class="big-heart"></div>
+        <h2 class="proposal-text" id="finalText"></h2>
+        
+        <div class="options-container" id="optionsUI">
+            <button class="btn-option" id="yesBtn" onclick="celebrateSuccess()">نعم و ألف نعم 😍</button>
+            <button class="btn-option" id="noBtn">لا 😢</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        const cursor = document.getElementById('magicCursor');
+        const introCard = document.getElementById('introCard');
+        const messageBox = document.getElementById('messageBox');
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        let rainActive = false;
+        let yesScale = 1;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            const xAxis = (window.innerWidth / 2 - e.clientX) / 30;
+            const yAxis = (window.innerHeight / 2 - e.clientY) / 30;
+            
+            const activeCard = (introCard.style.display !== 'none') ? introCard : messageBox;
+            if(activeCard && activeCard.style.display !== 'none') {
+                activeCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            }
+
+            // ميكانيكية الهروب
+            const noRect = noBtn.getBoundingClientRect();
+            const distance = Math.hypot(e.clientX - (noRect.left + noRect.width/2), e.clientY - (noRect.top + noRect.height/2));
+            if (distance < 120) {
+                moveNoButton();
+            }
+        });
+
+        function moveNoButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth - 100;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 100;
+            
+            const randomX = Math.max(100, Math.random() * maxX);
+            const randomY = Math.max(100, Math.random() * maxY);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            yesScale += 0.2;
+            yesBtn.style.transform = `scale(${yesScale})`;
+        }
+
+        function createHeartRain() {
+            if(!rainActive) return;
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heart.style.opacity = Math.random() * 0.6 + 0.4;
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        function typeEffect(element, text, speed, callback) {
+            let i = 0;
+            element.innerHTML = "";
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if(callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function revealMagic() {
+            rainActive = true;
+            setInterval(createHeartRain, 150);
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ff4b5c', '#a2d2ff'] });
+            document.getElementById('catSprite').src = "https://i.imgur.com/pYxL0mJ.png";
+            
+            setTimeout(() => {
+                introCard.style.opacity = '0';
+                setTimeout(() => {
+                    introCard.style.display = 'none';
+                    messageBox.style.display = 'block';
+                    setTimeout(() => {
+                        messageBox.style.opacity = '1';
+                        const msg = "أنتِ ما بس اختي و صديقتي و حبيبتي و كل شي، أنتِ الي تخليني افرح كل ما اكلمك و ما يكتمل يومي بدونك. كتبتُ لكِ هذه الكلمات لأذكركِ أنكِ أجمل ما حدث لي، وأنكِ الطفلة المدللة في قلبي دائماً وأبدأ.. شكراً لكونكِ أنتِ يا أغلى من يملك قلبي.";
+                        typeEffect(document.getElementById('textTarget'), msg, 50, () => {
+                            document.getElementById('finalActionBtn').classList.add('show');
+                        });
+                    }, 50);
+                }, 800);
+            }, 1000);
+        }
+
+        function showProposal() {
+            rainActive = false;
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('proposalScreen').style.display = 'flex';
+            
+            const finalMsg = "شوفي يا تسنيم شوفي انا تو اقولك كلام يحتاج له تفكير شويه فيعني قولي الي يميل له قلبك و عقلك يا تسنيم يا اختي و يا طفلتي شوفي انا اريدك بعد ما اشتغل و كل شي فيعني لو سمحتي هل تقدري انه تبتعدي عن الأولاد شويه الى ما اجيك؟";
+
+            setTimeout(() => {
+                const finalText = document.getElementById('finalText');
+                finalText.style.animation = "fadeInUp 1s forwards";
+                typeEffect(finalText, finalMsg, 60, () => {
+                    document.getElementById('optionsUI').style.display = 'flex';
+                });
+            }, 1000);
+        }
+
+        function celebrateSuccess() {
+            confetti({
+                particleCount: 500,
+                spread: 160,
+                origin: { y: 0.5 },
+                colors: ['#ff4b5c', '#ffffff', '#a2d2ff']
+            });
+            yesBtn.innerHTML = "أوعدك يا تسنيم اني اكون معك طول الوقت الى ما نكون مع بعض و اكون معاك اثر يا طفلتي الصغيره  ❤️";
+            noBtn.style.display = 'none';
+        }
+
+        // تأثير النيازك الساقطة
+        setInterval(() => {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            meteor.style.left = Math.random() * window.innerWidth + 'px';
+            meteor.style.top = '-80px';
+            document.body.appendChild(meteor);
+            meteor.animate([
+                { transform: 'translateY(0) rotate(45deg)', opacity: 0.8 },
+                { transform: 'translateY(100vh) translateX(-150px) rotate(45deg)', opacity: 0 }
+            ], { duration: 2000 });
+            setTimeout(() => meteor.remove(), 2000);
+        }, 1200);
+    </script>
+</body>
+</html>
