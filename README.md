@@ -39,7 +39,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 999999;
-            box-shadow: 0 0 20px 5px var(--accent), 0 0 40px 10px white;
+            box-shadow: 0 0 20px 5px vشar(--accent), 0 0 40px 10px white;
             transform: translate(-50%, -50%);
             left: -100px;
             transition: width 0.2s, height 0.2s, transform 0.1s ease-out;
@@ -379,7 +379,7 @@
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('proposalScreen').style.display = 'flex';
             
-            const finalMsg = "شوفي يا تسنيم شوفي انا تو اقولك كلام يحتاج له تفكير شويه فيعني قولي الي يميل له قلبك و عقلك يا تسنيم يا اختي و يا طفلتي شوفي انا اريدك بعد ما اشتغل و كل شي فيعني لو سمحتي هل تقدري انه تبتعدي عن الأولاد شويه الى ما اجيك؟";
+            const finalMsg = "شوفي يا ماماتي نتيه تعرفي اني احبك و اعشقك و اموت فيك يا حياتي    شوفي انا اريدك بعد ما اشتغل و كل شي فيعني لو سمحتي هل تقدري انه تبتعدي عن الأولاد شويه الى ما اجيك؟";
 
             setTimeout(() => {
                 const finalText = document.getElementById('finalText');
@@ -397,7 +397,7 @@
                 origin: { y: 0.5 },
                 colors: ['#ff4b5c', '#ffffff', '#a2d2ff']
             });
-            yesBtn.innerHTML = "أوعدك يا تسنيم اني اكون معك طول الوقت الى ما نكون مع بعض و اكون معاك اثر يا طفلتي الصغيره  ❤️";
+            yesBtn.innerHTML = "أوعدك ياماماتي و اميرتي و حياتي  اني اكون معك طول الوقت الى ما نكون مع بعض و اكون معاك اثر يا طفلتي الصغيره  ❤️";
             noBtn.style.display = 'none';
         }
 
